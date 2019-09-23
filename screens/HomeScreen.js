@@ -10,12 +10,10 @@ import {
     Button,
     View
 } from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
 
-import OrderScreen from '../screens/LinksScreen';
 import {MonoText} from '../components/StyledText';
 
-export class HomeScreen extends Component {
+export default class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
@@ -37,7 +35,7 @@ export class HomeScreen extends Component {
                     <View style={styles.introContainer}>
                         <Text style={styles.introText}>Welcome to my 🍕 App!</Text>
                         <Button
-                            title="Tap to Order"
+                            title="Place an Order 🤤"
                             onPress={() => this.props.navigation.navigate('Order')}/>
                     </View>
                 </ScrollView>
@@ -57,23 +55,6 @@ export class HomeScreen extends Component {
         );
     }
 }
-
-const RootStack = createStackNavigator({
-    Home: HomeScreen,
-    Order: OrderScreen
-}, {initialRouteName: 'Home'});
-
-const AppContainer = createAppContainer(RootStack);
-
-export default class App extends Component {
-    render() {
-        return <AppContainer/>;
-    }
-}
-
-App.navigationOptions = {
-    header: null
-};
 
 function DevelopmentModeNotice() {
     if (__DEV__) {
